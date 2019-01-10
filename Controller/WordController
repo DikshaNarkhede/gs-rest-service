@@ -1,0 +1,49 @@
+package hello;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class WordController {
+    // TODO Implement the /words/{word} endpoint
+
+   @RequestMaping(value="words/{word}",produces="application/json")
+   public Object checkPalindromAnagram(@PathVariable("word") String givenWord)
+  {
+    int length=givenWord.legnth;
+    boolean flag=true;
+    boolean flag1=false
+    String reverseString="";
+    for(int i=length-1;i>=0;i--)
+   {
+      String temp=givenWord.charAt(i);
+      reverseString=reverseString+temp;
+      
+   }
+
+
+ if(word.equals(reverseString))
+  {
+    flag1=true;
+  }
+  
+   
+//Logic for anagram
+            char[] wordArray = word.toLowerCase().toCharArray();
+            char[] reversedarray=reverseString.toLowerCase().toCharArray();
+            if(wordArray.length!=reversedarray.length)
+           {
+               flag=false;
+
+           }
+           Arrays.sort(wordArray);
+           Arrays.sort(reversedArray);
+           flag=Arrays.equal(wordArray,reversedArray);
+
+     Map<String, Object> result = new HashMap<String,Object>();
+    result.put("word",word);
+    result.put("palindrome",flag1);
+    result.put("anagramOfPalindrome",flag);
+    return result;
+
+  }
+}
